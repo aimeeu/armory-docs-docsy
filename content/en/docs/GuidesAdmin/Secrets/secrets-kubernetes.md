@@ -1,10 +1,10 @@
 ---
-layout: post
+
 title: Secrets in Kubernetes
-order: 153
+
 ---
 
-{:toc}
+
 
 >Note: Storing Spinnaker secrets in a Kubernetes secret is only supported if you're using the Operator to deploy and manage Spinnaker.
 

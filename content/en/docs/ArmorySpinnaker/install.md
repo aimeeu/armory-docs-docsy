@@ -1,20 +1,15 @@
 ---
-layout: post
-title: Installation
-order: 1
-redirect_from:
-  - /install_guide/install/
-  - /install-guide/gettings_started/
----
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
 
-# Installing Armory Spinnaker for Small Teams and POCs 
+title: Installation
+
+---
+
+
+# Installing Armory Spinnaker for Small Teams and POCs
 ## Introducing Armory Minnaker
 Armory Minnaker is an easy to use installation script that leverages the power of **Kubernetes** with the simplicity of a _Virtual Machine_.  The Kubernetes environmnent that will get installed on your behalf is based on [Rancher's K3s](https://k3s.io/).  You do not need to know how to setup Kubernetes as we have done all of the hard parts for you allowing you to get up and running with Spinnaker in under 10 minutes.  Check out [our video](https://youtu.be/jg8vJEzcuAA) on running Spinnaker across all of the public clouds including VMWare Fusion locally.  This deployment makes it easy to get up and running today and let's you scale your deployment into a medium to large deployment down the road.
 
-## Prerequisites 
+## Prerequisites
 
 Your VM should have 4 vCPUs, 16G of memory and 30G of HDD space.
 

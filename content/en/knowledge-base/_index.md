@@ -1,8 +1,12 @@
 ---
-title: Knowledge Base
+title: "Knowledge Base Blog"
+linkTitle: "Knowledge Base"
 menu:
   main:
     weight: 40
 ---
 
-<!--add blocks of content here to add more sections to the community page -->
+
+This is the **Knowledge Base** section.
+
+Files in these directories will be listed in reverse chronological order.

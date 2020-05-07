@@ -1,7 +1,7 @@
 ---
-layout: post
+
 title: Spinnaker Secrets
-order: 150
+
 ---
 Storing Spinnaker configs in a git repository is a great solution for maintaining versions of your configurations, but storing secrets in plain text is a bad security practice. If you're using the Operator to deploy Spinnaker, separating your secrets from your configs through end-to-end secrets management is already supported. If you're using Halyard, this is supported as of `halyard-armory:1.4.1`. All you need to do is replace secrets in the configuration files with the syntax described here, and Spinnaker will decrypt them as needed.
 

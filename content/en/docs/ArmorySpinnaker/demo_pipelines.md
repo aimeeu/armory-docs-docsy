@@ -1,7 +1,7 @@
 ---
-layout: post
+
 title: Demo Pipelines
-order: 170
+
 ---
 
 > NOTE:  This is an "alpha" feature, we would love your feedback and bug reports!
@@ -85,5 +85,3 @@ Field Descriptions:
 
 Remember, this is a very alpha feature.  Errors in the template may result in
 Front50 failing to boot properly; if this happens, you should be able to find the pipeline in your storage bucket and delete it manually, and Front50 should then recover.
-
-

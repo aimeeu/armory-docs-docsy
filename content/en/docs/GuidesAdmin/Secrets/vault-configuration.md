@@ -1,7 +1,7 @@
 ---
-layout: post
+
 title: Configuring Vault for Kubernetes Auth
-order: 155
+
 ---
 
 {:toc}

@@ -1,14 +1,6 @@
 ---
-layout: post
 title: Generating Certificates
-order: 46
 ---
-
-# What To Expect
-{:.no_toc}
-This guide includes helpful commands to get started with self-signed certificates:
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
 
 
 ## Prerequisites
@@ -21,12 +13,12 @@ You need a recent version of OpenSSL.
 Generate a key for our certificate authority:
 
 ```
-openssl genrsa -aes256 -passout pass:TRUSTSTORE_PASS -out ca.key 2048 
+openssl genrsa -aes256 -passout pass:TRUSTSTORE_PASS -out ca.key 2048
 ```
 
 Replace `TRUSTSTORE_PASS` with your own CA password.
 
-**Important:** Keep `ca.key` secure and do not distribute it. 
+**Important:** Keep `ca.key` secure and do not distribute it.
 
 Next, generate the certificate of the CA:
 
@@ -120,7 +112,7 @@ rm -rf services/*
 mkdir -p services/
 
 echo "Generating CA key..."
-openssl genrsa -aes256 -passout pass:${CA_PASSWORD} -out services/ca.key 4096 
+openssl genrsa -aes256 -passout pass:${CA_PASSWORD} -out services/ca.key 4096
 
 echo "Generate self signed root certificate"
 openssl req -x509 -new -nodes -key services/ca.key -sha256 -days 3650 -out services/ca.pem -passin pass:${CA_PASSWORD} -subj /C=US/CN=Test

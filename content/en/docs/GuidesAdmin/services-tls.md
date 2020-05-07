@@ -1,11 +1,7 @@
 ---
-layout: post
+
 title: Spinnaker Services TLS
-order: 44
-redirect_from:
-  - /spinnaker_install_admin_guides/spinnaker-services-tls/
-  - /spinnaker_install_admin_guides/services_tls/
-  - /spinnaker-install-admin-guides/spinnaker-services-ssl/
+
 ---
 
 # What To Expect
@@ -33,7 +29,7 @@ Note that distributing a CA public key is only needed if you sign certificates w
 
 **Java**
 
-Java services can present #1 as a keystore and #2 as a trust store in PKCS12 (preferred) or JKS format. 
+Java services can present #1 as a keystore and #2 as a trust store in PKCS12 (preferred) or JKS format.
 
 **Golang**
 
@@ -233,4 +229,3 @@ server:
 Run `hal deploy apply` after you make your changes.
 
 **Note**: There is currently no way to pass passwords stored in Kubernetes secrets as environment variables using Halyard. You can remove passwords from the keys you're using or use the Spinnaker Operator to reference Kubernetes secrets directly.
-

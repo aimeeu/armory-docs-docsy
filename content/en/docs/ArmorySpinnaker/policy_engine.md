@@ -1,7 +1,7 @@
 ---
-layout: post
+
 title: Policy Engine
-order: 142
+
 ---
 
 ## Overview
@@ -14,13 +14,13 @@ The Armory Policy Engine is designed to allow enterprises more complete control 
 * This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
 {:toc}
 
-## Requirements 
+## Requirements
 
 Make sure you can meet the following version requirements for the Policy Engine:
 * OPA versions 0.12.x or 0.13.x
 * Halyard 1.7.2 or later if you are using Halyard to manage Spinnaker
 * Armory Spinnaker 2.16.0 or later for Pipeline save time validation
-* Armory Spinnaker 2.19.0 or later for Pipeline runtime validation 
+* Armory Spinnaker 2.19.0 or later for Pipeline runtime validation
 
 ## Before You Start
 Using the Policy Engine requires an understanding of OPA's [rego syntax](https://www.openpolicyagent.org/docs/latest/policy-language/) and how to [deploy an OPA server](https://www.openpolicyagent.org/docs/latest/#running-opa).
@@ -32,7 +32,7 @@ The steps to enable the Policy Engine vary based on whether you use the [Operato
 ### Enabling Policy Engine using Operator
 
 Add the following section to `SpinnakerService` manifest:
-    
+
 ```yaml
 apiVersion: spinnaker.armory.io/{{ site.data.versions.operator-extended-crd-version }}
 kind: SpinnakerService
@@ -52,7 +52,7 @@ spec:
             enabled: true
             url: <OPA Server URL>:<port>/v1     
 ```
-    
+
 *Note: There must be a trailing /v1 on the URL. This extension is only compatible with OPA's v1 API.*
 
 If you are using an in-cluster OPA instance (such as one set up with the instructions below), Spinnaker can access OPA via the Kubernetes service DNS name. The following example configures Spinnaker to connect with an OPA server at http://opa.opaserver:8181:
@@ -83,8 +83,8 @@ Deploy the changes (assuming that Spinnaker lives in the: `spinnaker` namespace 
 kubectl -n spinnaker apply -f spinnakerservice.yml
 ```
 
-### Enabling Policy Engine using Halyard 
-  
+### Enabling Policy Engine using Halyard
+
 Add the following configuration to `.hal/default/profiles/spinnaker-local.yml`:
 
 ```yaml
@@ -122,14 +122,14 @@ Once Spinnaker finishes redeploying, Policy Engine can evaluate pipelines based 
 
 ## Deploying an OPA server for Policy Engine to use
 
-The Policy Engine supports the following OPA server deployments: 
+The Policy Engine supports the following OPA server deployments:
 
 * An OPA server deployed in the same Kubernetes cluster as an Armory Spinnaker deployment. The [Using ConfigMaps for OPA policies](#using-configmaps-for-opa-policies) section contains a ConfigMap you can use.
-* An OPA cluster that is **not** in the same Kubernetes cluster as an Armory Spinnaker deployment . See the [OPA documentation](https://www.openpolicyagent.org/docs/latest/) for more information about installing an OPA cluster. 
-    
+* An OPA cluster that is **not** in the same Kubernetes cluster as an Armory Spinnaker deployment . See the [OPA documentation](https://www.openpolicyagent.org/docs/latest/) for more information about installing an OPA cluster.
+
 ## Using ConfigMaps for OPA Policies
 
-If you want to use ConfigMaps for OPA policies, you can use the below manifest as a starting point. This example manifest deploys an OPA server and applies the configuration for things like rolebinding and a static DNS. 
+If you want to use ConfigMaps for OPA policies, you can use the below manifest as a starting point. This example manifest deploys an OPA server and applies the configuration for things like rolebinding and a static DNS.
 
 When using the below example, keep the following guidelines in mind:
 * The manifest does not configure any authorization requirements for the OPA server it deploys. This means that anyone can add a policy.
@@ -236,7 +236,7 @@ spec:
           # Change this to the namespace where you want OPA to look for policies
             - "--policies=opa"
           # Configure the OPA server to only check ConfigMaps with the relevant label
-            - "--require-policy-label=true" 
+            - "--require-policy-label=true"
 ---
 # Create a static DNS endpoint for Spinnaker to reach OPA
 apiVersion: v1
@@ -255,7 +255,7 @@ spec:
 
 ## Using the Policy Engine to validate pipeline configurations
 
-The Policy Engine uses [OPA's Data API](https://www.openpolicyagent.org/docs/latest/rest-api/#data-api) to check pipeline configurations against OPA policies that you set. 
+The Policy Engine uses [OPA's Data API](https://www.openpolicyagent.org/docs/latest/rest-api/#data-api) to check pipeline configurations against OPA policies that you set.
 
 In general, the only requirement for the Policy Engine in Rego syntax is the following:
 
@@ -277,7 +277,7 @@ At a high level, adding policies for the Policy Engine to use is a two-step proc
 
 **Step 1. Create Policies**
 
-The following OPA policy enforces one requirement on all pipelines: 
+The following OPA policy enforces one requirement on all pipelines:
 * Any pipeline with more than one stage must have a manual judgement stage.
 
 
@@ -296,9 +296,9 @@ Add the the policy to a file named `manual-judgment.rego`
 
 **Step 2. Add Policies to OPA**
 
-After you create a policy, you can add it to OPA with an API request or with a ConfigMap. The following examples use  a `.rego` file named `manual-judgement.rego`. 
+After you create a policy, you can add it to OPA with an API request or with a ConfigMap. The following examples use  a `.rego` file named `manual-judgement.rego`.
 
-**ConfigMap Example** 
+**ConfigMap Example**
 
 Armory recommends using ConfigMaps to add OPA policies instead of the API for OPA deployments in Kubernetes.
 
@@ -316,7 +316,7 @@ kubectl label configmap manual-judgment openpolicyagent.org/policy=rego
 
 This label corresponds to the label you add in the [example ConfigMap](#using-configmaps-for-opa-policies). The label in the ConfigMap for creating an OPA server configures the OPA server and, by extension, the Policy Engine to only check ConfigMaps that have the corresponding label. This improves performance.
 
-**API Example** 
+**API Example**
 
 Replace the endpoint with your OPA endpoint:
 
@@ -329,16 +329,16 @@ http://opa.spinnaker:8181/v1/policies/policy-01
 ```
 
 Note that you must use the `--data-binary` flag, not the `-d` flag.
-    
+
 ## Using the Policy Engine to validate deployments
 
-While simple cases can be validated by the Policy Engine during a pipeline's configuration, there are a number of cases that can only be addressed at runtime. By nature, Spinnaker's pipelines can be dynamic, resolving things like SpEL and Artifacts just in time for them. This means there are external influences on a pipeline that are not known at save time. To solve for this issue, the Policy Engine can validate pipelines when they run to but before deployments make it to your cloud provider. 
+While simple cases can be validated by the Policy Engine during a pipeline's configuration, there are a number of cases that can only be addressed at runtime. By nature, Spinnaker's pipelines can be dynamic, resolving things like SpEL and Artifacts just in time for them. This means there are external influences on a pipeline that are not known at save time. To solve for this issue, the Policy Engine can validate pipelines when they run to but before deployments make it to your cloud provider.
 
 As an example, let's use Policy Engine to prevent Kubernetes LoadBalancer Services being deployed with open SSH ports.
 
 ### Writing a policy
 
-Deployment validation works by mapping an OPA policy package to a Spinnaker deployment task. For example, deploying a Kubernetes Service is done using the Deploy (Manifest) stage, so we'll write a policy that applies to that task. 
+Deployment validation works by mapping an OPA policy package to a Spinnaker deployment task. For example, deploying a Kubernetes Service is done using the Deploy (Manifest) stage, so we'll write a policy that applies to that task.
 
 ```
 # Notice the package. The package maps to the task you want to create a policy for.
@@ -368,14 +368,14 @@ You'll notice a few things about this policy:
 
 * The policy tests a set of manifests which `deployManifest` will deploy to Kubernetes. This is part of the tasks configuration, which is passed into the policy in it's entirety under `input.deploy`.
 
-* The policy isn't limited to any particular Kubernetes account. If you'd like to only apply policies to, say, your Production account, use `input.deploy.account` to narrow down policies to specific accounts. This is useful when you want more or less restrictive policies across your infrastructure. 
+* The policy isn't limited to any particular Kubernetes account. If you'd like to only apply policies to, say, your Production account, use `input.deploy.account` to narrow down policies to specific accounts. This is useful when you want more or less restrictive policies across your infrastructure.
 
 Once you've written your policy, you can push it to your OPA server via a ConfigMap or the API. Once it's pushed, the Policy Engine can begin enforcing the policy.
 
 
 ### Validating a deployment
 
-Now that the policy has been uploaded to the OPA server, the policy gets enforced on any deployment to Kubernetes without additional input from the end user. Error messages returned by the policy will be surfaced in the UI immediately following a halted deployment. 
+Now that the policy has been uploaded to the OPA server, the policy gets enforced on any deployment to Kubernetes without additional input from the end user. Error messages returned by the policy will be surfaced in the UI immediately following a halted deployment.
 
 
 ![](/images/runtime-policy-validation.png)

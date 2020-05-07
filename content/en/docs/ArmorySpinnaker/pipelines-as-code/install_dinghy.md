@@ -1,12 +1,9 @@
 ---
-layout: post
+
 title: Installing Pipelines as Code
-order: 130
+
 ---
 
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
 
 # What To Expect
 This guide should include:
@@ -37,7 +34,7 @@ spec:
           enabled: true       # Whether or not dinghy is enabled
           ... # Rest of config omitted for brevity
 ```
-  
+
 Assuming Spinnaker lives in the `spinnaker` namespace:
 
 ```bash
@@ -80,7 +77,7 @@ spec:
           githubEndpoint: https://api.github.com # (Default: https://api.github.com) Github API endpoint. Useful if you’re using Github Enterprise
           ... # Rest of config omitted for brevity
 ```
-    
+
 ```bash
 kubectl -n spinnaker apply -f spinnakerservice.yml
 ```
@@ -100,8 +97,8 @@ hal deploy apply
 **Configure GitHub webhooks**
 
 Set up webhooks at the organization level for Push events. You can do this by going to: https://github.com/organizations/your_org_here/settings/hooks:
-1. Set `content-type` to `application/json`. 
-2. Set the `Payload URL` to your Gate URL. Depending on whether you configured Gate to use its own DNS name or a path on the same DNS name as Deck, the URL follows one of the following formats: 
+1. Set `content-type` to `application/json`.
+2. Set the `Payload URL` to your Gate URL. Depending on whether you configured Gate to use its own DNS name or a path on the same DNS name as Deck, the URL follows one of the following formats:
 
   * `https://<your-gate-url>/webhooks/git/github` (if you have a separate DNS name or port for Gate)
   * `https://<your-spinnaker-url>/api/v1/webhooks/git/github` (if you're using a different path for Gate)
@@ -130,11 +127,11 @@ spec:
           stashEndpoint: https://my-endpoint # Stash API endpoint. If you're using Bitbucket Server, update the endpoint to include the api e.g. https://your-endpoint-here.com/rest/api/1.0
           ... # Rest of config omitted for brevity
 ```
-    
+
 ```bash
 kubectl -n spinnaker apply -f spinnakerservice.yml
 ```
-  
+
 **Halyard**
 
 ```bash
@@ -171,7 +168,7 @@ spec:
           gitlabEndpoint: https://my-endpoint # GitLab endpoint
           ... # Rest of config omitted for brevity
 ```
-    
+
 ```bash
 kubectl -n spinnaker apply -f spinnakerservice.yml
 ```
@@ -202,16 +199,16 @@ to be able to reach back out to your GitLab installation; ensure that
 connectivity works as well.
 
 ### Custom branch configuration
-*Note: this feature requires armory spinnaker 2.5.6 or above.* 
+*Note: this feature requires armory spinnaker 2.5.6 or above.*
 
-By default, Dinghy will use the Master branch in your repository. If you wish to use a different default branch for your repository, this can be configured using the `repoConfig` tag in your yaml configuration. 
+By default, Dinghy will use the Master branch in your repository. If you wish to use a different default branch for your repository, this can be configured using the `repoConfig` tag in your yaml configuration.
 
-The `repoConfig` tag supports a collection of the following values. Each node in the collection must contain all of the fields listed below. 
+The `repoConfig` tag supports a collection of the following values. Each node in the collection must contain all of the fields listed below.
 * `branch` - the name of the branch you wish to use
 * `provider` - the name of the provider (see below for available providers)
 * `repo` - the name of the repository
 
-All providers available in Dinghy are supported. Please refer to the list below for the proper name to use in the configuration for each provider. 
+All providers available in Dinghy are supported. Please refer to the list below for the proper name to use in the configuration for each provider.
 * `github`
 * `bitbucket-cloud`
 * `bitbucket-server`
@@ -239,7 +236,7 @@ spec:
 
 **Halyard**
 
-This configuration goes inside your `profiles/dinghy-local.yml` file: 
+This configuration goes inside your `profiles/dinghy-local.yml` file:
 ```yaml
 repoConfig:
 - branch: some_branch
@@ -253,7 +250,7 @@ repoConfig:
 ### Other Options
 #### Fiat
 
-If Fiat is enabled, add the field `fiatUser: "your-service-account"` to the `dinghy` section in `SpinnakerService` manifest (Operator) or pass the option `--fiat-user "your-service-account"` (Halyard). Note that the service account has to be in a group that has read/write access to the pipelines you will be updating. 
+If Fiat is enabled, add the field `fiatUser: "your-service-account"` to the `dinghy` section in `SpinnakerService` manifest (Operator) or pass the option `--fiat-user "your-service-account"` (Halyard). Note that the service account has to be in a group that has read/write access to the pipelines you will be updating.
 
 If you have app specific permissions configured in Spinnaker, make sure you add the service account. For information on how to create a service account, click [here](https://www.spinnaker.io/setup/security/authorization/service-accounts/#creating-service-accounts).
 
@@ -283,12 +280,12 @@ spec:
         dinghy:
           enabled: true
           notifiers:
-            slack: 
+            slack:
               enabled: true       # Whether or not Slack notifications are enabled for dinghy events
               channel: my-channel # Slack channel where notifications will be sent to
               ... # Rest of config omitted for brevity
 ```
-    
+
 **Halyard**
 
 ```bash
@@ -311,9 +308,9 @@ Dinghy supports two additional template formats in addition to JSON:
 *Note: Selecting one of these parsers means that all of your dinghy templates must also be in that format.*
 
 To use one of these alternate formats, you'll need to configure a local override with one of these parsers.
- 
+
 **Operator**
- 
+
 ```yaml
 apiVersion: spinnaker.armory.io/{{ site.data.versions.operator-extended-crd-version }}
 kind: SpinnakerService
@@ -326,7 +323,7 @@ spec:
         parserFormat: hcl
         ... # Rest of config omitted for brevity
 ```
- 
+
 **Halyard**
 
 Add the following config to `~/.hal/default/profiles/dinghy-local.yml`:
@@ -364,9 +361,9 @@ spec:
           Level: INFO
           ... # Rest of config omitted for brevity
 ```
- 
+
 **Halyard**
- 
+
 Create `.hal/default/profiles/dinghy-local.yml` with the following config:
 
 ```

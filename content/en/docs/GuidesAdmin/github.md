@@ -1,13 +1,6 @@
 ---
-layout: post
 title: Configure Spinnaker to use Github as an Artifact Source
-order: 49
-redirect_from:
-  - /spinnaker_install_admin_guides/github/
 ---
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
 
 ## Configuring a Github Trigger
 

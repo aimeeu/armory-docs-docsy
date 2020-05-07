@@ -1,7 +1,7 @@
 ---
-layout: post
+
 title: Using Pipelines as Code
-order: 131
+
 ---
 
 Armory's _Pipelines-as-Code_ feature provides a way to specify pipeline definitions in source code repos such as GitHub and BitBucket.
@@ -10,9 +10,7 @@ The Armory Spinnaker installation provides a service called _Dinghy_, which keep
 
 > NOTE: before you can use this feature, please ensure you have [configured](http://docs.armory.io/spinnaker/install_dinghy/) it correctly.
 
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
+
 
 ## How It Works in a Nutshell
 
@@ -615,7 +613,7 @@ If you have already created a pipeline in the Spinnaker UI, you can create a din
 
    Note that the value you set for `"application"` must be the same as the value in step 3.
    For example, if your pipeline called "Wait Pipeline" has a JSON definition that looks like this:
-   
+
    ```json
    {
      "isNew": true,

@@ -1,13 +1,6 @@
 ---
-layout: post
 title: Docker Registries
-order: 51
-redirect_from:
-  - /spinnaker_install_admin_guides/docker/
 ---
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
 
 ## Configuring Docker Registries
 

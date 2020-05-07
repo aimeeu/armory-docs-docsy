@@ -1,16 +1,7 @@
 ---
-layout: post
+
 title: Installing Spinnaker in AWS
-order: 22
-published: true
-redirect_from:
-  - /spinnaker_install_admin_guides/install_on_eks/
-  - /spinnaker_install_admin_guides/install-on-eks/
-  - /spinnaker-install-admin-guides/install_on_eks/
-  - /spinnaker-install-admin-guides/install-on-eks/
-  - /spinnaker-install-admin-guides/install_on_aws/
-  - /spinnaker_install_admin_guides/install_on_aws/
-  - /spinnaker_install_admin_guides/install-on-aws/
+
 ---
 
 This guide describes how to install Spinnaker in AWS or in an on-prem Kubernetes cluster with access to S3. It will create and use the following Amazon Web Services resources:

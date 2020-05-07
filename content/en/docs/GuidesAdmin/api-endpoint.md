@@ -1,12 +1,5 @@
 ---
-layout: post
 title: Exposing the API Endpoint
-order: 47
-published: true
-redirect_from:
-  - /spinnaker_install_admin_guides/api-endpoint/
-  - /spinnaker_install_admin_guides/api_endpoint/
-  - /spinnaker-install-admin-guides/api_endpoint/
 ---
 {:.no_toc}
 * This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.

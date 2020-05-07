@@ -1,7 +1,7 @@
 ---
 title: "Installing Spinnaker in AKS"
 linkTitle: "Installing Spinnaker in AKS"
-weight: 26
+
 ---
 
 This guide describes how to install Spinnaker in Azure Kubernetes Service (AKS).  To do this, the guide walks you through creating and using the following Azure resources:

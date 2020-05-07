@@ -1,11 +1,9 @@
 ---
-layout: post
+
 title: Authentication and Authorization
-order: 100
+
 ---
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
+
 
 ## Overview
 
@@ -46,7 +44,3 @@ Here are some other resources that may help you properly configure security in
 Spinnaker:
 
 * [Armory Webinar on Authorization](https://blog.armory.io/webinar-configuring-auth-n-z-in-spinnaker-with-isaac-mosquera/)
-
-
-
-

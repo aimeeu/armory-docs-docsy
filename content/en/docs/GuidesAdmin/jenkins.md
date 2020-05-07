@@ -1,17 +1,12 @@
 ---
-layout: post
+
 title: Configure Jenkins
-order: 50
-redirect_from:
-  - /spinnaker_install_admin_guides/jenkins/
+
 ---
 
 Before you can make use of Jenkins in Spinnaker, you'll need to
 configure access to your Jenkins masters.
 
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
 
 > The Spinnaker project has more in-depth documentation on configuring Jenkins
 > in Spinnaker [here](https://www.spinnaker.io/setup/ci/jenkins/)

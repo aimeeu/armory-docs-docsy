@@ -1,7 +1,7 @@
 ---
-layout: post
+
 title: Application Secrets Management
-order: 60
+
 ---
 {:.no_toc}
 * This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
@@ -23,12 +23,12 @@ similar pattern should be applicable to similar tools, such as Amazon Secrets
 Manager.
 
 This guide presumes you've already installed and configured Vault; if you
-are using Vault and have not done so, check Vault's 
+are using Vault and have not done so, check Vault's
 [Getting Started](https://learn.hashicorp.com/vault/) guide.
 
 ## Protecting application secrets
 
-Armory recommends that you do not pass secrets through Spinnaker in plain text as this is not safe from a security standpoint. If your Spinnaker deployment gets breached and secrets were passed through it, intruders now have all applications secrets that were passed. 
+Armory recommends that you do not pass secrets through Spinnaker in plain text as this is not safe from a security standpoint. If your Spinnaker deployment gets breached and secrets were passed through it, intruders now have all applications secrets that were passed.
 
 Instead, use a secret store and only pass the location of or references to the secret. The best practice for using application secrets is for the application to fetch the secret during application startup. For VMs, this is during the VM bootstrap or application startup process. For Kubernetes, you usually do this using an init-container, sidecar, or both.
 
@@ -164,7 +164,3 @@ to manage application secrets within your system:
 * [Boostport's Kubernetes Vault Integration](https://github.com/Boostport/kubernetes-vault) -- This Github project incorporates a controller that watches
 for new pods and injects the secrets into them when they initialize.
 * [Working With Vault Secrets on Kubernetes](https://medium.com/ww-engineering/working-with-vault-secrets-on-kubernetes-fde381137d88)
-
-
-
-

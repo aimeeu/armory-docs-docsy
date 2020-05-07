@@ -1,10 +1,7 @@
 ---
-layout: post
+
 title: Spinnaker Services mTLS
-order: 45
-redirect_from:
-  - /spinnaker_install_admin_guides/spinnaker-services-mtls/
-  - /spinnaker_install_admin_guides/services_mtls/
+
 ---
 
 # What To Expect

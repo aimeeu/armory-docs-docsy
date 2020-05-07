@@ -1,17 +1,14 @@
 ---
-layout: post
+
 title: Installing Spinnaker in GKE using Operator
-order: 25
-published: true
+
 ---
 
 _Note: This guide is a work in progress._
 
 This guide contains instructions for installing Armory Spinnaker on a GKE Cluster using the [Spinnaker Operator](/spinnaker/operator/). Refer to the [Spinnaker Operator Reference](/operator_reference/operator-config/) for manifest entry details.
 
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
+
 
 # Prerequisites
 

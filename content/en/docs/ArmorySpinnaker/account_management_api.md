@@ -1,7 +1,5 @@
 ---
-layout: post
 title: Account Management API
-order: 99
 published: false
 ---
 
@@ -18,7 +16,7 @@ The Account Management API is currently in [Early Release](https://kb.armory.io/
 
 ## Requirements
 - Source repo stored in GitHub or GitHub Enterprise
-  
+
 ## Known Issues and Limitations with GitHub Backend
 
 - The API backend stores accounts in a single file, so you can only use the Account Management API to manage accounts for one installation of Spinnaker.
@@ -96,7 +94,7 @@ For more information aout how to deploy a manifest, see [Deploy Kubernetes Manif
       selector:
         app: acct-mgmt-api
       type: ClusterIP
-    
+
 
 
 ## Configuration
@@ -123,7 +121,7 @@ When using the GitHub integration, you need to configure Clouddriver to use GitH
         config:
           server:
             git:
-              uri: https://github.com/armory-io/spinnaker-remote-config 
+              uri: https://github.com/armory-io/spinnaker-remote-config
               password: <password>
               username: doogie
 
@@ -133,7 +131,7 @@ For more information about configuring Spinnaker for remote configuration, see [
 
 The Account Management API works by hooking into the same backends as Spring’s Cloud Config - the core of Dynamic Accounts within Spinnaker. For example, if you are using GitHub as a backend for storing your account configuration, you can use the same backend with the Account Management API. When the Management API changes the backing data, it replicates the change to Clouddriver.
 
-Once configured, you can interact with the Account Management API using your favorite API clients. 
+Once configured, you can interact with the Account Management API using your favorite API clients.
 
 Here’s an example using cURL:
 
@@ -174,4 +172,3 @@ The example includes an optional pipe of the output into JQ for readability.
 To delete an account with the API, call the `DELETE` route on a particular account by name. For example:
 
     # curl -X DELETE http://mgmt-api-url/api/v1/accounts/added-by-api
-

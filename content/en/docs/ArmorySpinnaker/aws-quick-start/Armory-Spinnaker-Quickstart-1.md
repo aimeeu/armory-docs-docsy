@@ -1,24 +1,21 @@
 ---
-layout: post
+
 title: AWS QuickStart Step 1
-order: 2
+
 ---
 
 The AWS QuickStart walks you through configuring your Spinnaker instance hosted on AWS to deploy to AWS.
 
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
 
 ## Prerequisites
 Before you start, ensure that you complete the following requirements:
-* Have your AWS Account number available in a text editor* 
+* Have your AWS Account number available in a text editor*
 * Have Minnaker installed on AWS. For more information about Minnaker, see [Minnaker](https://github.com/armory/minnaker).
 * SSH into your Minnaker Instance with AWS keys
 
 Need help setting this up? -  For a guided tutorial, watch the **Video Walkthrough** at the bottom of this document.
 
-# Prepare AWS by creating Roles, Permissions, and Trust
+## Prepare AWS by creating Roles, Permissions, and Trust
 
 ![No CREATE Permission](/images/AWS-Roles-Spinnaker.png)
 
@@ -112,9 +109,9 @@ Need help setting this up? -  For a guided tutorial, watch the **Video Walkthrou
 
 ## Login to your Minnaker EC2 Instance with SSH (Outside of Halyard Container)
 
-### Verify Roles are configured correctly 
+### Verify Roles are configured correctly
 
-1. Download the aws-cli: 
+1. Download the aws-cli:
 
    ```bash
    sudo snap install aws-cli --classic
@@ -123,11 +120,11 @@ Need help setting this up? -  For a guided tutorial, watch the **Video Walkthrou
 2. Verify **"Spinnaker-Managing-Role"**:
 
    ```bash
-   aws sts get-caller-identity 
+   aws sts get-caller-identity
    ```
-    
+
    The command returns output similar to the following output:
-    
+
    ```bash
    ubuntu:~$ aws sts get-caller-identity
    {
@@ -137,7 +134,7 @@ Need help setting this up? -  For a guided tutorial, watch the **Video Walkthrou
    }
    ```
 3. Verify that Spinnaker Managing Role can Assume Managing Role:
-    
+
    ```bash
    aws sts assume-role --role-arn arn:aws:iam::[YOUR_AWS_ACCOUNT_ID]:role/Spinnaker-Managed-Role --role-session-name   test
    ```
@@ -159,10 +156,10 @@ Need help setting this up? -  For a guided tutorial, watch the **Video Walkthrou
        }
    }
    ```
-### Congratulations! 
+## Congratulations!
 You have completed the 1st step in setting up the Spinnaker AWS Provider.  For Step 2, see [AWS Quick Start Step 2](/spinnaker/Armory-Spinnaker-Quickstart-2).
 
-# AWS QuickStart Step 1 Video
+## AWS QuickStart Step 1 Video
 
 <!-- blank line -->
 <figure class="video_container">

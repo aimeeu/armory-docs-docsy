@@ -1,9 +1,7 @@
 ---
-layout: post
+
 title: Orca with RDBMS
-order: 48
-redirect_from:
-  - /spinnaker_install_admin_guides/orca-sql/
+
 ---
 {:.no_toc}
 * This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
@@ -73,7 +71,7 @@ The above configuration grants authorization from any host. You can restrict it 
 
 ## Keeping existing execution history
 
-The above configuration will point Orca to your database. 
+The above configuration will point Orca to your database.
 You have the option to run a dual repository with the following in `profiles/orca-local.yml`:
 
 ```yaml
@@ -146,6 +144,3 @@ It means that after a while, data will grow large and you'll likely want to purg
 Note: We recommend saving past executions to a different data store for auditing purposes. You can do it in a variety of ways:
 - During the purge, by marking, exporting, then deleting older records.
 - By saving execution history from Echo's events and just delete older records from your database.
-
-
-

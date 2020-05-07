@@ -1,7 +1,5 @@
 ---
-layout: post
 title: Configure Armory Halyard
-order: 51
 ---
 {:.no_toc}
 * This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
@@ -78,4 +76,3 @@ You can also enable [path-style](https://docs.aws.amazon.com/AmazonS3/latest/dev
 ```
 spinnaker.config.input.enablePathStyleAccess: true
 ```
-

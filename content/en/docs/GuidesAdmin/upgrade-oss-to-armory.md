@@ -1,8 +1,7 @@
 ---
-layout: post
+
 title: Upgrading Open Source Spinnaker to Armory Spinnaker
-order: 28
-published: true
+
 ---
 
 Armory Spinnaker is installed with Armory Halyard, very similarly to the way Open Source Spinnaker is installed with Open Source Halyard. These are the key differences:
@@ -187,6 +186,6 @@ at [Source: N/A; line: -1, column: -1] (through reference chain:
 - Failed to get deployment name.
 ```
 
-If you see the above error, go to the `/home/spinnaker/.hal/config` file in your Halyard container, search for the offending field, and remove the yaml block (comment it out or completely remove it). 
+If you see the above error, go to the `/home/spinnaker/.hal/config` file in your Halyard container, search for the offending field, and remove the yaml block (comment it out or completely remove it).
 
 For example, in the above case, find the `deploymentEnvironment.nodeSelectors field`, and remove it. Repeat as necessary.

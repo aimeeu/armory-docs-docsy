@@ -1,7 +1,7 @@
 ---
-layout: post
+
 title: Secrets with Vault
-order: 154
+
 ---
 
 {:toc}

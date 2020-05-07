@@ -1,13 +1,5 @@
 ---
-layout: post
 title: "AWS: Deploying to AWS from Spinnaker (using IAM credentials)"
-order: 33
-# Change this to true when ready to publish
-published: true
-redirect_from:
-  - /spinnaker_install_admin_guides/add-aws-account/
-  - /spinnaker_install_admin_guides/add_aws_account/
-  - /spinnaker-install-admin-guides/add_aws_account/
 ---
 
 Once you have (OSS or Armory) Spinnaker up and running in Kubernetes, you'll want to start adding deployment targets.

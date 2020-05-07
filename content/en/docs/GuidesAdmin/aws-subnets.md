@@ -1,13 +1,5 @@
 ---
-layout: post
 title: "AWS: Configuring AWS Networking"
-order: 35
-redirect_from:
-  - /install_guide/subnets/
-  - /install-guide/subnets/
-  - /spinnaker_install_admin_guides/aws-subnets/
-  - /spinnaker_install_admin_guides/aws_subnets/
-  - /spinnaker-install-admin-guides/aws_subnets/
 ---
 
 {:.no_toc}

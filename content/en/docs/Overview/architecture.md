@@ -1,8 +1,5 @@
 ---
-layout: post
-order: 10
-redirect_from:
-  - /spinnaker_install_admin_guides/architecture/
+title: Architecture
 ---
 
 Spinnaker is the composition of a few microservices for resiliency

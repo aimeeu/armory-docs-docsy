@@ -1,11 +1,9 @@
 ---
-layout: post
+
 title: Armory Halyard
-order: 20
+
 ---
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
+
 
 ## hal
 
@@ -224,7 +222,7 @@ spec:
           autoLockPipelines: true # (Default: true) Lock pipelines in the UI before overwriting on change
           fiatUser: abc       # Fiat user or service account to use for Dinghy operations
           notifiers:
-            slack: 
+            slack:
               enabled: false  # Whether or not Slack notifications are enabled for dinghy events
               channel: abc    # Slack channel where notifications will be sent to
           webhookValidationEnabledProviders:  # List of enabled providers for webhook validations
@@ -309,7 +307,7 @@ hal armory dinghy webhooksecrets <provider> [ enable | disable]
 
 ---
 ## hal armory dinghy webhooksecrets <provider> edit
- 
+
 Add or edit webhook secrets validation in GitHub. This does not support other providers.  (Halyard >= 1.8.4)
 
 #### Usage
@@ -375,7 +373,7 @@ hal armory init [parameters]
  * `--path`: The path to where armory-install is already installed
 
 
-## hal armory secrets 
+## hal armory secrets
 
 Configure secrets management
 
@@ -475,7 +473,3 @@ hal armory secrets vault enable [parameters]
 #### Parameters
  * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
  * `--no-validate`: (*Default*: `false`) Skip validation.
-
-
-
-

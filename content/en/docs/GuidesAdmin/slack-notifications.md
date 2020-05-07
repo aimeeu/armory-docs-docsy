@@ -1,7 +1,7 @@
 ---
-layout: post
+
 title: Configuring Slack Notifications
-order: 87
+
 ---
 This article describes how to configure Spinnaker to send Slack notifications.  
 {:.no_toc}

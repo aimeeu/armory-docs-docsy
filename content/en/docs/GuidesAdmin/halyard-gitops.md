@@ -1,7 +1,5 @@
 ---
-layout: post
 title: Spinnaker GitOps with Halyard
-order: 158
 ---
 This article describes how to automate the deployment of Spinnaker and manage its configuration in source control.
 {:.no_toc}

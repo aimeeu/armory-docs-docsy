@@ -1,7 +1,7 @@
 ---
-layout: post
+
 title: Secrets with S3
-order: 151
+
 ---
 
 {:toc}
@@ -49,4 +49,3 @@ And to reference the content of our kubeconfig file:
 ```
 encryptedFile:s3!f:mykubeconfig!r:us-west-2!b:mybucket
 ```
-

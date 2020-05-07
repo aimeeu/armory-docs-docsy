@@ -1,8 +1,5 @@
 ---
-layout: post
 title: "Configuring Spinnaker on AWS for Disaster Recovery"
-order: 35
-
 ---
 
 {:.no_toc}

@@ -1,10 +1,10 @@
 ---
-layout: post
+
 title: Secrets with GCS
-order: 152
+
 ---
 
-{:toc}
+
 
 This document describes how to set up Spinnaker secrets in an encrypted GCS bucket. This example uses a bucket (`mybucket`) to store GitHub credentials and a kubeconfig file.
 
@@ -42,4 +42,3 @@ To reference the content of our kubeconfig file:
 ```
 encrypted:gcs!f:mykubeconfig!b:mybucket
 ```
-

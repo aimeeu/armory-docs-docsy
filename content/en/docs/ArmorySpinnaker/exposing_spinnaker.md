@@ -1,9 +1,7 @@
 ---
-layout: post
+
 title: Exposing Spinnaker
-order: 30
-redirect_from:
-  - /spinnaker/configure_ingress/
+
 ---
 {:.no_toc}
 * This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
@@ -27,7 +25,7 @@ While there are many ways to expose Spinnaker, we find the method described in t
 **Operator**
 
 Update your `SpinnakerService` manifest with the following example `expose` configuration, which will automatically create one Kubernetes service LoadBalancer for the API (Gate) and one for the UI (Deck):
-    
+
 ```yaml
 apiversion: spinnaker.io/{{ site.data.versions.operator-extended-crd-version }}
 kind: SpinnakerService
@@ -42,7 +40,7 @@ spec:
 ```
 
 Save and apply the configuration. After some time, you can see the LoadBalancer CNAMEs that were created:
-    
+
 ```bash
 NAMESPACE={spinnaker namespace}
 API_URL=$(kubectl -n $NAMESPACE get spinsvc spinnaker -o jsonpath='{.status.apiUrl}')
@@ -101,7 +99,7 @@ This tutorial presumes you've already created a certificate in the AWS Certifica
 **Operator**
 
 Update and apply the `SpinnakerService` manifest to specify the DNS names for Gate and Deck, and to provide annotations specific for EKS LoadBalancers:
-    
+
 ```yaml
 apiversion: spinnaker.io/{{ site.data.versions.operator-extended-crd-version }}
 kind: SpinnakerService
@@ -125,7 +123,7 @@ spec:
         service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <ACM CERT ARN>  # Replace with your cert ARN
         service.beta.kubernetes.io/aws-load-balancer-ssl-ports: 80,443
 ```
-  
+
 Assuming that Spinnaker is installed in `spinnaker` namespace:
 
 ```bash
@@ -195,13 +193,13 @@ spec:
       type: NodePort
       ...  # rest of config omitted for brevity
 ```
-  
+
 Assuming that Spinnaker is installed in `spinnaker` namespace:
-    
+
 ```bash
 kubectl -n spinnaker apply -f spinnakerservice.yml
 ```
-  
+
 After a few seconds you can view which ports were opened in EKS worker nodes, you'll need them in the next step:
 
 ```
@@ -280,7 +278,7 @@ Spinnaker needs to know which url's are used to access it. After you have update
 **Operator**
 
 Update and apply the `SpinnakerService` manifest:
-    
+
 ```yaml
 apiversion: spinnaker.io/{{ site.data.versions.operator-extended-crd-version }}
 kind: SpinnakerService
@@ -296,9 +294,9 @@ spec:
           overrideBaseUrl: https://spinnaker.armory.io       # Specify your DNS name for Deck with https scheme
           ...  # rest of config omitted for brevity
 ```
-  
+
 Assuming that Spinnaker is installed in `spinnaker` namespace:
-    
+
 ```bash
 kubectl -n spinnaker apply -f spinnakerservice.yml
 ```
@@ -366,7 +364,7 @@ Now tell Spinnaker about its external endpoints:
 **Operator**
 
 Update and apply the `SpinnakerService` manifest:
-    
+
 ```yaml
 apiversion: spinnaker.io/{{ site.data.versions.operator-extended-crd-version }}
 kind: SpinnakerService
@@ -382,9 +380,9 @@ spec:
           overrideBaseUrl: http://demo.armory.io       # Specify your DNS name for Deck
           ...  # rest of config omitted for brevity
 ```
-  
+
 Assuming that Spinnaker is installed in `spinnaker` namespace:
-    
+
 ```bash
 kubectl -n spinnaker apply -f spinnakerservice.yml
 ```
@@ -414,7 +412,7 @@ To enable redirects, complete the following steps:
 **Operator**
 
 Update the `SpinnakerService` manifest with the following:
-    
+
 ```yaml
 apiversion: spinnaker.io/{{ site.data.versions.operator-extended-crd-version }}
 kind: SpinnakerService
@@ -432,13 +430,13 @@ spec:
             httpsServerPort: X-Forwarded-Port
             ...  # rest of config omitted for brevity
 ```
-  
+
 Assuming that Spinnaker is installed in `spinnaker` namespace:
-    
+
 ```bash
 kubectl -n spinnaker apply -f spinnakerservice.yml
 ```
-  
+
 Finally, clear your cache.
 
 **Halyard**

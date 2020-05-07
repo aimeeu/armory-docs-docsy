@@ -1,11 +1,9 @@
 ---
-layout: post
+
 title: Bake and Share AMIs Across Accounts
-order: 100
+
 ---
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
+
 
 ## Overview
 
@@ -16,7 +14,7 @@ Many people have Spinnaker sitting in a different AWS account than where they ar
 * **Operator**
 
     You can add the following snippet to your `SpinnakerService` manifest and apply it after replacing the example values with ones that correspond to your environment. The example adds an AWS account and configures the baking service (Rosco) with default values:
-    
+
     ```yaml
     apiVersion: spinnaker.armory.io/{{ site.data.versions.operator-extended-crd-version }}
     kind: SpinnakerService
@@ -24,7 +22,7 @@ Many people have Spinnaker sitting in a different AWS account than where they ar
       name: spinnaker
     spec:
       spinnakerConfig:
-        config: 
+        config:
           aws:
             enabled: true
             accounts:

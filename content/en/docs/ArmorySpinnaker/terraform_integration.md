@@ -1,22 +1,22 @@
 ---
-layout: post
+
 title: Terraform Integration
-order: 141
+
 ---
 
-{:.no_toc}
+
 ## Overview
 
 Use Armory Spinnaker's Terraform Integration to integrate your infrastructure-as-code Terraform workflow into your SDLC. Armory's Terraform Integration interacts with a source repository you specify to deploy your infrastructure as part of your Spinnaker pipeline.
 
 At a high level, a Terraform Integration stage performs the following actions when it runs:
 
-1. Authenticates to your repo using basic authentication credentials you provide. This can be a GitHub token or a BitBucket username/password combination. 
+1. Authenticates to your repo using basic authentication credentials you provide. This can be a GitHub token or a BitBucket username/password combination.
 2. Pulls a full directory from your Git repository.
 3. Optionally uses a Spinnaker artifact provider (Github, BitBucket, or HTTP) to pull in a `tfvars`-formatted variable file.
 4. Runs the Terraform action you select.   
 
-The following tutorials walk you through how to setup Armory's Terraform Integration and execute Terraform code stored in a Git repo as part of a Spinnaker pipeline. More specifically, this page describes a workflow for the Terraform Integration to create and manage infrastructure on AWS. 
+The following tutorials walk you through how to setup Armory's Terraform Integration and execute Terraform code stored in a Git repo as part of a Spinnaker pipeline. More specifically, this page describes a workflow for the Terraform Integration to create and manage infrastructure on AWS.
 
 {:.no_toc}
 ### Under the hood
@@ -79,7 +79,7 @@ If you do not already have a `git/repo` artifact account configured, you must do
       - name: gitrepo
         token: 12344 #GitHub personal access token
   ```
-  
+
 For more information, see [Git Repo](https://www.spinnaker.io/reference/artifacts/types/git-repo/).
 
 ### Configure the Terraform Integration with GitHub
@@ -113,7 +113,7 @@ skip this section.
 **Operator**
 
   Edit the `SpinnakerService` manifest to add the following:
-  
+
 ```yaml
 apiVersion: spinnaker.armory.io/{{ site.data.versions.operator-extended-crd-version }}
 kind: SpinnakerService
@@ -206,7 +206,7 @@ spec:
   spinnakerConfig:
     config:
       artifacts:
-        bitbucket: 
+        bitbucket:
           enabled: true
           accounts:
           - name: bitbucket-for-terraform
@@ -264,7 +264,7 @@ hal armory terraform edit \
 
 Armory ships several versions of Terraform as part of the Terraform Integration feature. The Terraform binaries are verified by checksum and with Hashicorp's GPG key before being installed into our release.
 
-When creating a Terraform Integration stage, pipeline creators select a specific available version from the list of available versions: 
+When creating a Terraform Integration stage, pipeline creators select a specific available version from the list of available versions:
 
 ![Terraform version to use](/images/terraform_version.png)
 
@@ -292,7 +292,7 @@ spec:
         settings-local.js: |
           window.spinnakerSettings.feature.terraform = true;
 ```
-    
+
 **Halyard**
 
 Edit `~/.hal/default/profiles/settings-local.js` and add the following line:
@@ -305,7 +305,7 @@ window.spinnakerSettings.feature.terraform = true;
 
 After you finish your Terraform integration configuration, perform the following steps:
 
-Apply the changes: 
+Apply the changes:
 
 **Operator**
 
@@ -316,13 +316,13 @@ kubectl -n spinnaker apply -f spinnakerservice.yml
 ```
 
 **Halyard**
- 
+
 ```bash
 hal deploy apply
 ```
 
 Then, confirm that the Terraform Integration service (Terraformer) is deployed with your Spinnaker deployment:
-    
+
 ```bash
 kubectl get pods -n {your-spinnaker-namespace}
 ```
@@ -333,7 +333,7 @@ For a tour of the Terraform Integration Stage UI, see the [Terraform Integration
 
 ![Terraform Stage in Deck](/images/terraform_stage_ui.png)
 
-When you create or edit a pipeline in Deck,  a stage called **Terraform** is available. This stage can perform Terraform actions such as `plan` and `destroy` as part of your Spinnaker pipeline. 
+When you create or edit a pipeline in Deck,  a stage called **Terraform** is available. This stage can perform Terraform actions such as `plan` and `destroy` as part of your Spinnaker pipeline.
 
 To use the stage, perform the following steps:
 
@@ -342,22 +342,22 @@ To use the stage, perform the following steps:
 3. For **Type**, select **Terraform**.
 4. Add a **Stage Name**.
 5. Configure the Terraform Integration stage.
-    The available fields may vary slightly depending on what you configure for the stage: 
+    The available fields may vary slightly depending on what you configure for the stage:
     * **Basic Settings**
       * **Terraform Version**:  Terraform version to use. All Terraform stages within a pipeline that modify state (apply, output, destroy) must use the same version.
       * **Action**: Terraform action to perform. You can select any of the following actions:
         * **Plan**: The output of the plan command is saved to a base64-encoded Spinnaker artifact and is injected into context.  You can use this artifact with a webhook to send the plan data to an external system or to use it in an `apply` stage. Optionally, you can select **Plan for Destroy** to view what Terraform destroys if you run the Destroy action.
-        * **Apply**: Run `terraform apply`. Optionally, you can ignore state locking. Armory recommends you do not ignore state locking because it can lead to state corruption. Only use this setting if you understand the consequences. 
+        * **Apply**: Run `terraform apply`. Optionally, you can ignore state locking. Armory recommends you do not ignore state locking because it can lead to state corruption. Only use this setting if you understand the consequences.
         * **Destroy**: Run `terraform destroy`. Optionally, you can ignore state locking. Armory recommends you do not ignore state locking because it can lead to state corruption. Only use this setting if you understand the consequences.
-        * **Output**: Run `terraform output`. 
+        * **Output**: Run `terraform output`.
       * **Targets**: Scope execution to a certain subset of resources.
       * **Workspace**: [Terraform workspace](https://www.terraform.io/docs/state/workspaces.html) to use. The workspace gets created if it doesn't already exist.
     * **Main Terraform Artifact**
       * **Expected Artifact**: Required. Select or define only one `git/repo` type artifact, which is a **custom-artifact**.
-        ![Terraform git repo artifact](/images/terraform-git-repo.png) 
+        ![Terraform git repo artifact](/images/terraform-git-repo.png)
         * **Account**: The account to use for your artifact.
         * **URL**: If you use a GitHub artifact, make sure you supply the _API_ URL of the file, not the URL from the `Raw` GitHub page. Use the following examples as a reference for the API URL:
-          
+
           Regular GitHub:
 
           ```
@@ -370,12 +370,12 @@ To use the stage, perform the following steps:
           https://{host}/api/v3/repos/{org}/{repo}/contents/{file path}
           ```
         * **Checkout subpath**: Enable this option to specify a **Subpath** within a Git repo. Useful if you have a large repo and the Terraform files are located in a specific directory.
-        * **Branch**: The Git branch or commit to use. 
-    
+        * **Branch**: The Git branch or commit to use.
+
       * **Subdirectory**: Subdirectory within a repo where the `terraform` command runs. Use `./` if the command should run at the root level.
     * **Variable Files**: Optional. Variable files that get appended to the Terraform command. Equivalent to running terraform apply with the `-var-file` option.
       * If you want to use the output of a **Plan** stage for an **Apply** stage, select the **Plan** stage output as an **Expected Artifact**
-    * **Variable Overrides**: Optional. Key/value pairs used as variables in the Terraform command. Equivalent to running terraform apply with the `-var` option. You can use a GitHub or BitBucket 
+    * **Variable Overrides**: Optional. Key/value pairs used as variables in the Terraform command. Equivalent to running terraform apply with the `-var` option. You can use a GitHub or BitBucket
     * **Backend Artifact**: Optional. Configuration stored outside of the primary repo that gets used for authenticating to a state backend. For example, if you want to use an S3 artifact for your backend state, specify it in this section.
 
       For the `backendArtifact` and other artifacts, you can replace `github/file` with some other artifact type. For example, if you're using the BitBucket artifact provider, specify `bitbucket/file` and the corresponding artifact account.
@@ -384,7 +384,7 @@ To use the stage, perform the following steps:
 
 The Terraform Integration supports the use of custom Terraform providers and plugins. The Terraform Integration downloads the plugins and injects them into each stage dynamically as needed to ensure the Terraform code can run.
 
-Any plugin you want to use must meet the following requirements: 
+Any plugin you want to use must meet the following requirements:
 * Be a zip, tar, gzip, tar-gzip or executable
 * If compressed, be at the root of the archive
 * Be x86-64 (amd64) Linux binaries
@@ -488,8 +488,8 @@ Terraform supports the ability to reference AWS profiles defined via a [shared c
 
    **Note**: You can swap the `ConfigMap` for a `Secret` if you prefer. The `ConfigMap` is used in this documentation for simplicity.
 
-2. Apply the `ConfigMap`: 
-   
+2. Apply the `ConfigMap`:
+
    ```bash
    kubectl apply -f {temp-filename}`
    ```
@@ -497,7 +497,7 @@ Terraform supports the ability to reference AWS profiles defined via a [shared c
 3. Configure the Terraform Integration to mount this `ConfigMap` at runtime by adding the following service setting:
 
    **Operator**
- 
+
    ```yaml
    apiVersion: spinnaker.armory.io/{{ site.data.versions.operator-extended-crd-version }}
    kind: SpinnakerService
@@ -513,11 +513,11 @@ Terraform supports the ability to reference AWS profiles defined via a [shared c
                type: configMap
                mountPath: /home/spinnaker/.aws/
    ```
- 
+
    **Halyard**
 
    Add to `~/.hal/default/service-settings/terraformer.yml`:
- 
+
    ```yaml
    kubernetes:
      volumes:
@@ -526,16 +526,16 @@ Terraform supports the ability to reference AWS profiles defined via a [shared c
        mountPath: /home/spinnaker/.aws/
    ```
 
-4. Deploy these changes to your Spinnaker instance: 
-   
+4. Deploy these changes to your Spinnaker instance:
+
    **Operator**
- 
+
    ```bash
    kubectl -n spinnaker apply -f spinnakerservice.yml
    ```
-    
+
    **Halyard**
-    
+
    ```bash
    hal deploy apply
    ```
@@ -558,12 +558,12 @@ provider "aws" {
 
 ### Background
 
-If your Terraform scripts rely on modules stored in a private remote repository, you need to add your `SSH` key to the Terraform Integration container in order for the repo to be cloned.  This workflow requires modifications to the Terrform Integration `deployment` running in Kubernetes. 
+If your Terraform scripts rely on modules stored in a private remote repository, you need to add your `SSH` key to the Terraform Integration container in order for the repo to be cloned.  This workflow requires modifications to the Terrform Integration `deployment` running in Kubernetes.
 
 The workflow below assumes you are using `SSH` in order to clone a remote repository.  A similar workflow exists for relying on `HTTP/HTTPS`.
 <br>
 
-__Note:__ We are in the design stage of work that reduces the overhead involved in retrieving remote modules. If you have a use case or need that relates to this topic, send us a message in Slack or visit [go.armory.io/ideas](go.armory.io/ideas). 
+__Note:__ We are in the design stage of work that reduces the overhead involved in retrieving remote modules. If you have a use case or need that relates to this topic, send us a message in Slack or visit [go.armory.io/ideas](go.armory.io/ideas).
 
 ### Prerequisites
 
@@ -577,7 +577,7 @@ On your local workstation, create a directory and place the SSH Key and any othe
 
    ```bash
    mkdir ssh
-   ``` 
+   ```
 
 2. Copy the SSH Key:
 
@@ -597,7 +597,7 @@ On your local workstation, create a directory and place the SSH Key and any othe
    kubectl create secret generic spin-terraformer-sshkey -n spinnaker-system --from-file=id_rsa=ssh/id_rsa --from-file=config=ssh/config
    ```
 
-In this example, you create a secret with the SSH key and a config to ignore `known hosts` file issues. 
+In this example, you create a secret with the SSH key and a config to ignore `known hosts` file issues.
 
 ### Update the Manifest
 
@@ -622,7 +622,7 @@ that will contain the copy of the secret with the correct UID and permissions:
 
    ```yaml
    # spin-terraformer deployment
-   
+
    # This correctly sets the permissions and ownership of the ssh key
    initContainers:
    - name: set-key-ownership

@@ -1,7 +1,7 @@
 ---
 title: "Glossary"
 linkTitle: "Glossary"
-weight: 4
+
 ---
 
 Below is a list of words and phrases as they apply to Spinnaker and their definitions, including any additional information that may be helpful.

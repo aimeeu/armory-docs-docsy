@@ -1,11 +1,9 @@
 ---
-layout: post
+
 title: Kubernetes Deployments
-order: 132
+
 ---
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
+
 
 This document focuses on the manifest based (aka V2) Kubernetes provider.
 

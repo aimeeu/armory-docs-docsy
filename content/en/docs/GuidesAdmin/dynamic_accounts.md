@@ -1,7 +1,5 @@
 ---
-layout: post
 title: Dynamic Kubernetes Accounts With Vault
-order: 32
 ---
 
 {:.no_toc}

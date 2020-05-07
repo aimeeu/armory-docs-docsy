@@ -1,10 +1,7 @@
 ---
-layout: post
+
 title: Baking Machine Images (AWS, GCE, etc.) Using Packer
-order: 35
-# Substantially different from install_guide/packer
-redirect_from:
-  - /spinnaker_install_admin_guides/packer/
+
 ---
 
 ## What To Expect

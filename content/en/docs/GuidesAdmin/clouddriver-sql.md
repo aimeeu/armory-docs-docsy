@@ -1,9 +1,5 @@
 ---
-layout: post
 title: Clouddriver with RDBMS
-order: 49
-redirect_from:
-  - /spinnaker_install_admin_guides/clouddriver-sql/
 ---
 {:.no_toc}
 * This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
@@ -15,7 +11,7 @@ Armory recommends MySQL 5.7. For AWS, you can use Aurora.
 
 ## Base Configuration
 
-You can find a complete description of the options in the [open source documentation](https://www.spinnaker.io/setup/productionize/persistence/clouddriver-sql/). 
+You can find a complete description of the options in the [open source documentation](https://www.spinnaker.io/setup/productionize/persistence/clouddriver-sql/).
 
 
 ## Database Setup

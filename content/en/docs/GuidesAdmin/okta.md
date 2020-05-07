@@ -1,17 +1,12 @@
 ---
-layout: post
+
 title: Okta Integration
-order: 160
-published: True
+
 ---
 
 
 Okta is a authorization and authentication service provider using SAML.
 
-To configure Spinnaker to use Okta, you will need to:
-
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
 
 
 ## Configure a Spinnaker Application in Okta

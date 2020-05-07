@@ -1,12 +1,9 @@
 ---
-layout: post
+
 title: AWS QuickStart Step 2
-order: 3
+
 ---
 
-{:.no_toc}
-* This is a placeholder for an unordered list that will be replaced with ToC. To exclude a header, add {:.no_toc} after it.
-{:toc}
 
 Need help setting this up? - For a guided tutorial, see the **Video Walkthrough** at the bottom of this page.
 
@@ -36,8 +33,8 @@ Before you start, ensure that have completed the following requirements:
 The Account name is arbitrary and should be a name that is an identifiable.  The name is visable in Spinnaker UI.  The following examples use `aws-dev-1`.
 
 1. Set environment variables for halyard command:
-   
-   ```bash 
+
+   ```bash
    export AWS_ACCOUNT_NAME=aws-dev-1 \
    export ACCOUNT_ID=[YOUR_ACCOUNT_ID] \
    export ROLE_NAME=role/Spinnaker-Managed-Role
@@ -53,25 +50,25 @@ The Account name is arbitrary and should be a name that is an identifiable.  The
    ```
 
 3. Enable the AWS provider:
-   
+
    ```bash
    hal config provider aws enable
    ```
 
 4. Add an account to the ECS provider:
-   
+
    ```bash
    hal config provider ecs account add ecs-account-name --aws-account aws-dev-1
    ```
 
 5. Enable the ECS provider:
-   
+
    ```bash
    hal config provider ecs enable
    ```
 
 6. Apply the new configurations and redeploy Spinnaker:
-   
+
    ```bash
    hal deploy apply
    ```
@@ -96,7 +93,7 @@ immutable_metadata  {"purpose":"example-purpose"}
 
 # Second: Connect Spinnaker to an Amazon EKS cluster
 
-For the tasks in this section, complete them on your local workstation, *not from the Minnaker VM*. 
+For the tasks in this section, complete them on your local workstation, *not from the Minnaker VM*.
 
 ![No CREATE Permission](/images/Spinnaker-to-EKS.png)
 
