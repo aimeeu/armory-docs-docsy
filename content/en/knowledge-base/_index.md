@@ -1,5 +1,5 @@
 ---
-title: Community
+title: Knowledge Base
 menu:
   main:
     weight: 40

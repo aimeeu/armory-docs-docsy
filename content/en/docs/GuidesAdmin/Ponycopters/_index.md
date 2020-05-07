@@ -1,4 +1,3 @@
-
 ---
 title: "Working with Ponycopters"
 linkTitle: "Working with Ponycopters"
@@ -13,4 +12,3 @@ This is a placeholder page. Replace it with your own content.
 
 
 This is the section landing page.
-
