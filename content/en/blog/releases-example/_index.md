@@ -1,5 +1,5 @@
 ---
-title: "Releases Topics"
+title: "New Releases"
 linkTitle: "Releases"
 weight: 20
 ---

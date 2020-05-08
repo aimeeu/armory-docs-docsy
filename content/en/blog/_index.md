@@ -1,13 +1,12 @@
 ---
-title: "Docsy Blog"
-linkTitle: "Blog"
+title: "Knowledge Base Blog"
+linkTitle: "Knowledge Base"
 menu:
   main:
     weight: 30
 ---
 
 
-This is the **blog** section. It has two categories: News and Releases.
+This is the **blog** section. It has multiple directories.
 
 Files in these directories will be listed in reverse chronological order.
-
